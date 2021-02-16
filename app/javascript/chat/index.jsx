@@ -9,11 +9,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './components/app';
 import messagesReducer from './reducers/messages_reducer';
 
-const chatContainer = document.getElementById('chat_app');
+const chatContainer = document.getElementById('chat_app'); // You should already have this line
 
 const initialState = {
   messages: [],
-  channels: [ 'general', 'nerdtalk', 'sports', 'potter' ], // TODO: get that from Rails DB.
+  channels: [ 'general', 'nerdtalk', 'sports', 'potter' ] // TODO: get that from Rails DB.
 };
 
 const reducers = combineReducers({

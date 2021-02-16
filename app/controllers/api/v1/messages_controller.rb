@@ -37,4 +37,8 @@ class Api::V1::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
+  def fetch_channels
+    @channels = Channel.all.map {|channel| channel.name }
+  end
 end
