@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/api/v1';
+const BASE_URL = '/api/v1';
 
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const MESSAGE_POSTED = 'MESSAGE_POSTED';
@@ -13,29 +13,27 @@ export function fetchMessages(channel) {
   };
 }
 
-
 export function createMessage(channel, content) {
   const url = `${BASE_URL}/channels/${channel}/messages`;
-  const body = { content }; // ES6 destructuring
+  const body = { content };
   const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const promise = fetch(url, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'X-CSRF-Token': csrfToken
     },
     credentials: 'same-origin',
     body: JSON.stringify(body)
   }).then(r => r.json());
-  console.log(channel);
-  console.log(content);
-  console.log(body);
+  console.log(promise);
   return {
     type: MESSAGE_POSTED,
     payload: promise // Will be resolved by redux-promise
   };
 }
+
 
 export function selectChannel(channel) {
   return {

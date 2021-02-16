@@ -12,7 +12,7 @@ class MessageList extends Component {
   }
 
   componentDidMount() {
-    // this.refresher = setInterval(this.fetchMessages, 5000);
+    this.refresher = setInterval(this.fetchMessages, 5000);
   }
 
   componentDidUpdate() {
@@ -20,7 +20,7 @@ class MessageList extends Component {
   }
 
   componentWillUnmount() {
-    // clearInterval(this.refresher);
+    clearInterval(this.refresher);
   }
 
   fetchMessages = () => {

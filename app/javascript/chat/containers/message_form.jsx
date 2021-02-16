@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createMessage } from '../actions/index';
+import { fetchMessages, createMessage } from '../actions/index';
 
 class MessageForm extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class MessageForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.createMessage(this.props.selectedChannel, this.state.value);
+    this.props.fetchMessages(this.props.selectedChannel);
     this.setState({ value: '' }); // Reset message input
   }
 
@@ -41,13 +42,7 @@ class MessageForm extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createMessage }, dispatch);
+  return bindActionCreators({ createMessage, fetchMessages }, dispatch);
 }
 
-function mapStateToProps(state) {
-  return {
-    
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
+export default connect(null, mapDispatchToProps)(MessageForm);

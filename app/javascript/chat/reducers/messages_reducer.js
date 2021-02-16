@@ -5,11 +5,11 @@ export default function(state = null, action) {
     case FETCH_MESSAGES: {
       return action.payload;
     }
-    case MESSAGE_POSTED: {
-      const copiedState = state.slice(0);
-      copiedState.push(action.payload);
-      return copiedState;
-    }
+    // case MESSAGE_POSTED: {
+    //   const copiedState = state.slice(0);
+    //   copiedState.push(action.payload);
+    //   return copiedState;
+    // }
   
     default:
       return state;
